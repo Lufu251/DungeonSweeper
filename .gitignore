@@ -1,0 +1,10 @@
+# General
+.vscode
+.cache
+
+# Build folder
+build
+build-web
+
+# Custom
+ToDo.md
