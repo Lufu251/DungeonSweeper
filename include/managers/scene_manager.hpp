@@ -7,7 +7,7 @@
 #include <scene.hpp>
 
 class SceneManager {
-public:
+    public:
     SceneManager() : currentSceneType(SceneType::NONE) {
         // Pre-create scenes or create on demand
         scenes[SceneType::MENU] = std::make_unique<MenuScene>();
@@ -57,7 +57,7 @@ public:
         SceneTransitionLogic();
     }
 
-private:
+    private:
     SceneType currentSceneType;
     Scene* currentScene; // Raw pointer to the currently active scene
     std::map<SceneType, std::unique_ptr<Scene>> scenes; // Owns the scene objects

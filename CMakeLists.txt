@@ -111,7 +111,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 file(GLOB_RECURSE PROJECT_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/src/*.cpp")
 
 # Adding include paths
-list(APPEND PROJECT_INCLUDE ${CMAKE_CURRENT_LIST_DIR}/include/)
+list(APPEND PROJECT_INCLUDE 
+    ${CMAKE_CURRENT_LIST_DIR}/include/
+    ${CMAKE_CURRENT_LIST_DIR}/include/managers
+)
 
 # Declaring our executable
 add_executable(${PROJECT_NAME})

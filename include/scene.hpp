@@ -3,6 +3,8 @@
 #include <raylib.h>
 #include <lfgl.hpp>
 
+#include <asset_manager.hpp>
+
 enum class SceneType {
     NONE,
     MENU,
@@ -61,6 +63,8 @@ struct PlayScene  :  public Scene{
     // Member variables specific to the PlayScene
     bool showDebug = true;
 
+    AssetManager assets;
+
     // Declare RenderTexture2D objects
     RenderTexture2D gameRenderTexture;
     RenderTexture2D debugRenderTexture;
@@ -68,6 +72,13 @@ struct PlayScene  :  public Scene{
 
     void Enter() override {
         TraceLog(LOG_INFO, "PlayScene: Entered");
+
+        // AssetManager
+        assets.SetAssetsPath("assets");
+        assets.LoadTexture("test_texture", "textures/test.psng");
+        assets.LoadSound("test_texture", "textures/test.psng");
+        assets.LoadFont("test_texture", "textures/test.psng");
+
         // Initialize RenderTexture2D objects
         // Make sure they have the same dimensions as your screen or desired render area
         gameRenderTexture = LoadRenderTexture(GetScreenWidth(), GetScreenHeight());
@@ -129,5 +140,8 @@ struct PlayScene  :  public Scene{
         UnloadRenderTexture(gameRenderTexture);
         UnloadRenderTexture(debugRenderTexture);
         UnloadRenderTexture(guiRenderTexture);
+
+        // Unload all Assets
+        assets.UnloadAllAssets();
     }
 };
