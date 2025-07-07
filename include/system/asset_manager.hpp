@@ -73,44 +73,45 @@ class AssetManager{
     }
 
     Texture2D& GetTexture(const std::string& name) {
-        if (IsTextureValid(textures.at(name))) {
-            return textures[name];
-        } else {
+        if (!IsTextureValid(textures.at(name))) {
             std::cerr << "AssetManager: Failed to find texture " << name << std::endl;
-            return textures[name];
         }
+
+        return textures[name];
     }
 
     Sound& GetSound(const std::string& name) {
         if (IsSoundValid(sounds.at(name))) {
-            return sounds[name];
-        } else {
             std::cerr << "AssetManager: Failed to find sound " << name  << std::endl;
-            return sounds[name];
         }
+
+        return sounds[name];
     }
 
     Font& GetFont(const std::string& name) {
         if (IsFontValid(fonts.at(name))) {
-            return fonts[name];
-        } else {
             std::cerr << "AssetManager: Failed to find font" << name << std::endl;
-            return fonts[name];
         }
+
+        return fonts[name];
     }
 
+    // Cleanup all resources
     void UnloadAllAssets() {
-        for (auto const& [name, texture] : this->textures) {
+        // Unload and clear textures
+        for (auto const& [name, texture] : textures) {
             ::UnloadTexture(texture);
         }
         this->textures.clear();
 
-        for (auto const& [name, sound] : this->sounds) {
+        // Unload and clear sounds
+        for (auto const& [name, sound] : sounds) {
             ::UnloadSound(sound);
         }
         this->sounds.clear();
 
-        for (auto const& [name, font] : this->fonts) {
+        // Unload and clear fonts
+        for (auto const& [name, font] : fonts) {
             ::UnloadFont(font);
         }
         this->fonts.clear();

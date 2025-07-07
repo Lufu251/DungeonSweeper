@@ -4,7 +4,7 @@
 #include <memory>
 #include <map>
 
-#include <scene.hpp>
+#include <scenes.hpp>
 
 class SceneManager {
     public:
@@ -71,7 +71,7 @@ class SceneManager {
 
             case SceneType::MENU : {
                 MenuScene* menu = static_cast<MenuScene*>(currentScene);
-                if (IsKeyPressed(KEY_ESCAPE)) {
+                if (menu->playButton.mIsPressed) {
                     SetScene(SceneType::PLAY);
                 }
             } break;
@@ -79,7 +79,7 @@ class SceneManager {
             case SceneType::PLAY: {
                 PlayScene* play = static_cast<PlayScene*>(currentScene);
                 // If ESC is pressed in PlayScene, go back to MenuScene
-                if (IsKeyPressed(KEY_A)) {
+                if (play->menuButton.mIsPressed) {
                     SetScene(SceneType::MENU);
                 }
             } break;

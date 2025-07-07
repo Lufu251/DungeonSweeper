@@ -15,7 +15,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 option(USE_RAYLIB "Use raylib" ON)
 option(USE_RAYGUI "Use raygui" ON)
 option(USE_BOX2D "Use Box2D" OFF)
-option(USE_LDTKLOADER "Use LDtk Loader" OFF)
 
 
 ##########################################################################################
@@ -113,7 +112,7 @@ file(GLOB_RECURSE PROJECT_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/s
 # Adding include paths
 list(APPEND PROJECT_INCLUDE 
     ${CMAKE_CURRENT_LIST_DIR}/include/
-    ${CMAKE_CURRENT_LIST_DIR}/include/managers
+    ${CMAKE_CURRENT_LIST_DIR}/include/system
 )
 
 # Declaring our executable
