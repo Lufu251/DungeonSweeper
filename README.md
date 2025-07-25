@@ -1,5 +1,5 @@
 # DungeonSweeper
-This is a simple game that adds to the concept of the classic MineSweeper.
+This is a very simple Minesweeper clone for testing WebAssembely with Raylib
 
 * [Features](#features)
 * [Notes](#notes)
@@ -45,4 +45,4 @@ This is a simple game that adds to the concept of the classic MineSweeper.
     Now there should be a HTTP Server running under port 8000 to test your project. The URL should be visible in the active terminal.
 
 ## License
-This project is licensed under the [LICENSE_NAME] License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

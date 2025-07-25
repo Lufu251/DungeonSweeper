@@ -7,7 +7,7 @@ int main(void){
     // Screen dimensions
     const int screenWidth = 800;
     const int screenHeight = 800;
-    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
+    //SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(screenWidth, screenHeight, "Raylib Template");
     SetExitKey(KEY_NULL);
     SetTargetFPS(60);

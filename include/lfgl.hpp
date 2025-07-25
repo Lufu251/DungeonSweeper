@@ -8,7 +8,7 @@ namespace lfgl {
     template<typename T>
     struct Array2D{
     private:
-        int mX, mY;
+        size_t mX, mY;
         std::vector<T> mData;
 
     public:
@@ -27,11 +27,11 @@ namespace lfgl {
             mY = y;
         }
 
-        int getX(){
+        size_t getX(){
             return mX;
         }
 
-        int getY(){
+        size_t getY(){
             return mY;
         }
 
@@ -41,6 +41,10 @@ namespace lfgl {
 
         const T& operator()(size_t x, size_t y) const {
             return mData[mX * y + x];
+        }
+
+        bool isOutOfBound(const size_t& x, const size_t& y){
+            return x < 0 or x >= mX or y < 0 or y >= mY;
         }
     };
 

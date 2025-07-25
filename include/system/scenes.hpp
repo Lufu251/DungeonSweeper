@@ -2,13 +2,15 @@
 
 #include <raylib.h>
 #include <lfgl.hpp>
+#include <game_objects.hpp>
 
 #include <asset_manager.hpp>
 
 enum class SceneType {
     NONE,
     MENU,
-    PLAY
+    PLAY,
+    VICTORY
 };
 
 struct Scene {
@@ -31,6 +33,7 @@ struct Scene {
 struct MenuScene : public Scene{
     // Member variables specific to the MenuScene
     lfgl::Button playButton;
+    lfgl::Button exitButton;
 
     void Enter() override;
 
@@ -43,15 +46,39 @@ struct MenuScene : public Scene{
 
 struct PlayScene  :  public Scene{
     // Member variables specific to the PlayScene
-    bool showDebug = true;
     lfgl::Button menuButton;
+
+    bool gameOver = false;
 
     AssetManager assets;
 
+    Camera2D playCamera;
+
+    // Game objects
+    float tileSize = 24;
+    GameBoard board;
+
     // Declare RenderTexture2D objects
     RenderTexture2D gameRenderTexture;
-    RenderTexture2D debugRenderTexture;
     RenderTexture2D guiRenderTexture;
+
+    void Enter() override;
+
+    void Update() override;
+
+    void Draw() override;
+
+    void Exit() override;
+
+    void renderBoard();
+    void uncoverTiles(size_t x, size_t y);
+    bool CheckVictory();
+};
+
+struct VictoryScene : public Scene{
+    // Member variables specific to the MenuScene
+    lfgl::Button playagainButton;
+    lfgl::Button exitButton;
 
     void Enter() override;
 

@@ -11,7 +11,7 @@
 https://emscripten.org/docs/getting_started/downloads.html
 
 # CHANGE THIS VARIABLE to match your system's path.
-EMSDK_PATH="$HOME/emsdk"
+EMSDK_PATH="./emsdk"
 
 # The name of the build directory to be created.
 BUILD_DIR="build-web"

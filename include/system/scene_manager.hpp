@@ -12,6 +12,7 @@ class SceneManager {
         // Pre-create scenes or create on demand
         scenes[SceneType::MENU] = std::make_unique<MenuScene>();
         scenes[SceneType::PLAY] = std::make_unique<PlayScene>();
+        scenes[SceneType::VICTORY] = std::make_unique<VictoryScene>();
 
         SetScene(SceneType::PLAY); // Start scene
     }
@@ -74,6 +75,11 @@ class SceneManager {
                 if (menu->playButton.mIsPressed) {
                     SetScene(SceneType::PLAY);
                 }
+
+                if(menu->exitButton.mIsPressed){
+                    CloseWindow();
+                }
+
             } break;
 
             case SceneType::PLAY: {
@@ -82,6 +88,26 @@ class SceneManager {
                 if (play->menuButton.mIsPressed) {
                     SetScene(SceneType::MENU);
                 }
+
+                if (play->gameOver) {
+                    SetScene(SceneType::MENU);
+                }
+
+                if(play->CheckVictory()){
+                    SetScene(SceneType::VICTORY);
+                }
+            } break;
+
+            case SceneType::VICTORY : {
+                VictoryScene* menu = static_cast<VictoryScene*>(currentScene);
+                if (menu->playagainButton.mIsPressed) {
+                    SetScene(SceneType::PLAY);
+                }
+
+                if(menu->exitButton.mIsPressed){
+                    CloseWindow();
+                }
+
             } break;
         }
     }
