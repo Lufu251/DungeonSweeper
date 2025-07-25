@@ -3,6 +3,7 @@
 #include <random>
 #include <queue>
 #include <array>
+#include <set>
 
 void PlayScene::Enter() {
     TraceLog(LOG_INFO, "PlayScene: Entered");
@@ -22,24 +23,27 @@ void PlayScene::Enter() {
     menuButton.setSize({100, 30});
 
     // Generate board
+    gameOver = false;
+    board = GameBoard(8,8);
+
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> dist(0, 99);
+    std::uniform_int_distribution<int> distX(0, board.grid.getX()-1);
+    std::uniform_int_distribution<int> distY(0, board.grid.getY()-1);
     
-
-    size_t bombPercentage = 8;
-    board = GameBoard(8,8);
-    for(size_t x=0; x< board.grid.getX(); x++){
-        for(size_t y=0; y< board.grid.getY(); y++){
-            size_t randomInt = dist(gen);
-            std::cout << "Random: " << randomInt << std::endl;
-            if(randomInt < bombPercentage){
-                std::cout << "Bomb" << std::endl;
-                board.grid(x,y).mBomb = true;
-
-            }
-        }
+    size_t bombAmount = 10;
+    std::set<std::pair<size_t, size_t>> locations;
+    while(locations.size() < bombAmount){
+        size_t randomX = distX(gen);
+        size_t randomY = distY(gen);
+        locations.insert({randomX, randomY});
+        std::cout << locations.size() << std::endl;
     }
+
+    for(auto& location : locations){
+        board.grid(location.first, location.second).mBomb = true;
+    }
+
     board.CalculateNumbers();
 
     playCamera.target = {(board.grid.getX() * tileSize) /2,(board.grid.getY() * tileSize) /2};
@@ -136,7 +140,7 @@ void PlayScene::renderBoard(){
             }
 
             if(currentTile.mBomb){
-                DrawRectangleV({x * tileSize, y * tileSize}, {tileSize, tileSize}, RED);
+                //DrawRectangleV({x * tileSize, y * tileSize}, {tileSize, tileSize}, RED);
             }
             
         }
