@@ -8,13 +8,15 @@
 
 class SceneManager {
     public:
+    bool shouldClose = false;
+
     SceneManager() : currentSceneType(SceneType::NONE) {
         // Pre-create scenes or create on demand
         scenes[SceneType::MENU] = std::make_unique<MenuScene>();
         scenes[SceneType::PLAY] = std::make_unique<PlayScene>();
         scenes[SceneType::VICTORY] = std::make_unique<VictoryScene>();
 
-        SetScene(SceneType::PLAY); // Start scene
+        SetScene(SceneType::MENU); // Start scene
     }
 
     ~SceneManager() {
@@ -58,6 +60,12 @@ class SceneManager {
         SceneTransitionLogic();
     }
 
+    void CloseScenes(){
+        shouldClose = true;
+        for(auto& scene : scenes)
+            scene.second->Exit();
+    }
+
     private:
     SceneType currentSceneType;
     Scene* currentScene; // Raw pointer to the currently active scene
@@ -77,7 +85,7 @@ class SceneManager {
                 }
 
                 if(menu->exitButton.mIsPressed){
-                    CloseWindow();
+                    CloseScenes();
                 }
 
             } break;
@@ -105,7 +113,7 @@ class SceneManager {
                 }
 
                 if(menu->exitButton.mIsPressed){
-                    CloseWindow();
+                    CloseScenes();
                 }
 
             } break;

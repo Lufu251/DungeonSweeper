@@ -17,9 +17,13 @@ int main(void){
     // RunScene -------------------------------------------------------------------------
     while (!WindowShouldClose()){
         scene.Run();
+
+        if(scene.shouldClose){
+            CloseWindow(); // Close window and OpenGL context
+        }
     }
 
-    CloseWindow(); // Close window and OpenGL context
+    
 
     return 0;
 }
