@@ -68,7 +68,7 @@ class SceneManager {
 
     private:
     SceneType currentSceneType;
-    Scene* currentScene; // Raw pointer to the currently active scene
+    Scene* currentScene = nullptr; // Raw pointer to the currently active scene
     std::map<SceneType, std::unique_ptr<Scene>> scenes; // Owns the scene objects
 
     // Manage scene transitions based on scene's internal state
