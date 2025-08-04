@@ -8,15 +8,13 @@
 
 class SceneManager {
     public:
-    bool shouldClose = false;
+    bool requestClose = false;
 
     SceneManager() : currentSceneType(SceneType::NONE) {
         // Pre-create scenes or create on demand
         scenes[SceneType::MENU] = std::make_unique<MenuScene>();
         scenes[SceneType::PLAY] = std::make_unique<PlayScene>();
         scenes[SceneType::VICTORY] = std::make_unique<VictoryScene>();
-
-        SetScene(SceneType::MENU); // Start scene
     }
 
     ~SceneManager() {
@@ -61,7 +59,7 @@ class SceneManager {
     }
 
     void CloseScenes(){
-        shouldClose = true;
+        requestClose = true;
         for(auto& scene : scenes)
             scene.second->Exit();
     }

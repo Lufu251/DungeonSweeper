@@ -8,7 +8,7 @@
 #==============================================================================
 
 # NOTE you must have installed emscripten to any folder and define the path here:
-https://emscripten.org/docs/getting_started/downloads.html
+# https://emscripten.org/docs/getting_started/downloads.html
 
 # CHANGE THIS VARIABLE to match your system's path.
 EMSDK_PATH="./emsdk"

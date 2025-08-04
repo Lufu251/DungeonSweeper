@@ -23,7 +23,6 @@ void MenuScene::Draw() {
         DrawRectangleRec(exitButton.mRect, WHITE);
         DrawText("Exit", exitButton.mRect.x, exitButton.mRect.y, 20, BLACK);
 
-
         DrawRectangleRec(playButton.mRect, WHITE);
         DrawText("Play", playButton.mRect.x, playButton.mRect.y, 20, BLACK);
 
