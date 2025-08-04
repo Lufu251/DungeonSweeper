@@ -3,19 +3,20 @@ This is a very simple Minesweeper clone for testing WebAssembely with Raylib
 
 * [Features](#features)
 * [Notes](#notes)
-* [Media](#media)
 * [Building](#building)
+* [Media](#media)
 * [License](#license)
 
 ## Features
-* (Add a features of your project here)
+* Play a simple MineSweeper like game in your browser or any operatingsystem.
+* Repeatable game loop with button controls.
+* Scene management with menu, play and victory scene.
+* Drawing to rendertextures for debug, game and gui.
 
 ## Notes
-* (Add a controls here)
-* (Add a additional information here)
-
-## Media
-* (Add a screenshot or GIF of your project here)
+* Click to uncover a tile and reveal if it is a mine.
+* This project was my first Webassembly game and I have also used it to text on different plattforms (macos, linux, windows, web)
+* I will use the implemented systems in my next projects
 
 ## Building
 
@@ -43,6 +44,13 @@ This is a very simple Minesweeper clone for testing WebAssembely with Raylib
     ./build_web.sh
     ```
     Now there should be a HTTP Server running under port 8000 to test your project. The URL should be visible in the active terminal.
+
+## Media
+### Menu Scene:
+![menu_scene](media/menu.png)
+
+### Play scene:
+![play_scene](media/play.png)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

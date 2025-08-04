@@ -37,7 +37,6 @@ void PlayScene::Enter() {
         size_t randomX = distX(gen);
         size_t randomY = distY(gen);
         locations.insert({randomX, randomY});
-        std::cout << locations.size() << std::endl;
     }
 
     for(auto& location : locations){
@@ -57,7 +56,6 @@ void PlayScene::Update() {
 
     if(IsMouseButtonPressed(0)){
         Vector2 mousePosition = GetScreenToWorld2D(GetMousePosition(), playCamera);
-        std::cout << "x:" << mousePosition.x << " y:" << mousePosition.y << std::endl;
         int xGrid = mousePosition.x / tileSize;
         int yGrid = mousePosition.y / tileSize;
 

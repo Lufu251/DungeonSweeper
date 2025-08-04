@@ -1,6 +1,7 @@
 # General
 .vscode
 .cache
+.DS_Store
 
 # Build folder
 build
